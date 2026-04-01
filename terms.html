@@ -1,516 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Use — Margin</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margin — Terms of Use</title>
   <style>
-    :root {
-      --green-deep:   #1a332d;
-      --green-mid:    #2d5a52;
-      --green-light:  #e0f2ef;
-      --green-bg:     #f4fcf9;
-      --aurora-1:     #00F2FE;
-      --aurora-2:     #4FACFE;
-      --aurora-3:     #43E97B;
-      --text-main:    #1a332d;
-      --text-muted:   #2d5a52;
-      --text-faint:   rgba(45,90,82,0.45);
-      --white:        #ffffff;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--green-bg);
-      color: var(--text-main);
-      line-height: 1.75;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(0,242,254,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(67,233,123,0.07) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2.5rem;
-      background: rgba(244,252,249,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(45,90,82,0.08);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-    }
-
-    .nav-logo-icon {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 0.5rem;
-      background: linear-gradient(135deg, var(--aurora-1), var(--aurora-2), var(--aurora-3));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .nav-logo-icon svg { width: 1.1rem; height: 1.1rem; }
-
-    .nav-logo-name {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--green-deep);
-    }
-
-    .nav-badge {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--text-faint);
-      letter-spacing: 0.05em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-faint);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--green-mid); }
-    .nav-links a.active { color: var(--aurora-2); font-weight: 700; }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-      padding: 5rem 2.5rem 3rem;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.1s;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      color: var(--green-deep);
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards 0.2s;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      background: linear-gradient(135deg, var(--aurora-2), var(--aurora-3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--text-faint);
-      font-weight: 400;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards 0.35s;
-    }
-
-    .hero-divider {
-      width: 3rem;
-      height: 2px;
-      background: linear-gradient(90deg, var(--aurora-2), var(--aurora-3));
-      border-radius: 2px;
-      margin: 2rem 0;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards 0.45s;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 2.5rem 6rem;
-    }
-
-    .section {
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    .section:nth-child(1)  { animation-delay: 0.5s; }
-    .section:nth-child(2)  { animation-delay: 0.55s; }
-    .section:nth-child(3)  { animation-delay: 0.6s; }
-    .section:nth-child(4)  { animation-delay: 0.65s; }
-    .section:nth-child(5)  { animation-delay: 0.7s; }
-    .section:nth-child(6)  { animation-delay: 0.75s; }
-    .section:nth-child(7)  { animation-delay: 0.8s; }
-    .section:nth-child(8)  { animation-delay: 0.85s; }
-    .section:nth-child(9)  { animation-delay: 0.9s; }
-    .section:nth-child(10) { animation-delay: 0.95s; }
-    .section:nth-child(11) { animation-delay: 1.0s; }
-
-    .section-number {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--aurora-2);
-      margin-bottom: 0.4rem;
-    }
-
-    .section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--green-deep);
-      margin-bottom: 0.9rem;
-      line-height: 1.3;
-    }
-
-    .section p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-weight: 400;
-    }
-
-    .section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0 0.75rem;
-    }
-
-    .section ul li {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      padding: 0.35rem 0 0.35rem 1.4rem;
-      position: relative;
-      font-weight: 400;
-    }
-
-    .section ul li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--aurora-2);
-      font-weight: 700;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.9);
-      border-radius: 1.5rem;
-      padding: 1.8rem 2rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 24px rgba(45,90,82,0.06);
-    }
-
-    /* 订阅高亮卡片 */
-    .subscription-card {
-      background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(67,233,123,0.06));
-      border: 1px solid rgba(79,172,254,0.2);
-      border-radius: 1.5rem;
-      padding: 1.8rem 2rem;
-      margin: 1rem 0;
-    }
-
-    .subscription-card .plan {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(79,172,254,0.1);
-      font-size: 0.88rem;
-    }
-
-    .subscription-card .plan:last-child { border-bottom: none; }
-    .subscription-card .plan-name { font-weight: 600; color: var(--green-deep); }
-    .subscription-card .plan-price { font-weight: 700; color: var(--aurora-2); }
-
-    .contact-block {
-      background: linear-gradient(135deg, rgba(0,242,254,0.08), rgba(67,233,123,0.08));
-      border: 1px solid rgba(79,172,254,0.2);
-      border-radius: 1.5rem;
-      padding: 2rem;
-      margin-top: 1rem;
-    }
-
-    .contact-block p { margin-bottom: 0.4rem; }
-
-    .contact-block a {
-      color: var(--aurora-2);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(79,172,254,0.3);
-      transition: border-color 0.2s;
-    }
-
-    .contact-block a:hover { border-color: var(--aurora-2); }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 2rem 2.5rem 3rem;
-      border-top: 1px solid rgba(45,90,82,0.08);
-    }
-
-    footer p {
-      font-size: 0.75rem;
-      color: var(--text-faint);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 0.75rem;
-    }
-
-    footer .footer-links a {
-      font-size: 0.72rem;
-      color: var(--text-faint);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    footer .footer-links a:hover { color: var(--green-mid); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 0.9rem 1.25rem; }
-      .nav-links { display: none; }
-      .hero { padding: 3.5rem 1.25rem 2rem; }
-      .content { padding: 0 1.25rem 4rem; }
-      .card, .subscription-card, .contact-block { padding: 1.25rem; }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #2d5a52; background: #f4fcf9; line-height: 1.8; padding: 2rem 1.5rem; max-width: 680px; margin: 0 auto; }
+    h1 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.1rem; font-weight: 800; margin-top: 2rem; margin-bottom: 0.5rem; }
+    p, li { font-size: 0.9rem; color: #2d5a52; opacity: 0.8; margin-bottom: 0.8rem; }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.4rem; }
+    .date { font-size: 0.8rem; opacity: 0.5; margin-bottom: 2rem; }
+    a { color: #1D9E75; }
+    .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(45,90,82,0.1); font-size: 0.8rem; opacity: 0.5; }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <a class="nav-logo" href="./index.html">
-      <div class="nav-logo-icon">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 10 C50 10,56 35,70 50 C56 65,50 90,50 90 C50 90,44 65,30 50 C44 35,50 10,50 10Z" stroke="white" stroke-width="7" stroke-linejoin="round"/>
-          <path d="M10 50 C18 50,22 38,28 44 C34 50,30 50,30 50" stroke="white" stroke-width="7" stroke-linecap="round"/>
-          <path d="M90 50 C82 50,78 38,72 44 C66 50,70 50,70 50" stroke="white" stroke-width="7" stroke-linecap="round"/>
-          <circle cx="33" cy="80" r="7" stroke="white" stroke-width="6"/>
-          <line x1="74" y1="18" x2="74" y2="30" stroke="white" stroke-width="6" stroke-linecap="round"/>
-          <line x1="68" y1="24" x2="80" y2="24" stroke="white" stroke-width="6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <span class="nav-logo-name">Margin</span>
-    </a>
-    <div class="nav-links">
-      <a href="./index.html">Privacy Policy</a>
-      <a href="./terms.html" class="active">Terms of Use</a>
-    </div>
-    <span class="nav-badge">Terms of Use</span>
-  </nav>
+<h1>Terms of Use</h1>
+<p class="date">Last updated: April 2, 2026</p>
 
-  <!-- Hero -->
-  <div class="hero">
-    <p class="hero-eyebrow">Legal · Terms</p>
-    <h1 class="hero-title">Fair rules,<br/><em>clearly stated.</em></h1>
-    <p class="hero-meta">Effective date: March 26, 2026 &nbsp;·&nbsp; Developer: Susie Hao</p>
-    <div class="hero-divider"></div>
-  </div>
+<p>Welcome to Margin. By using this app, you agree to these terms. Please read them carefully.</p>
 
-  <!-- Content -->
-  <div class="content">
+<h2>1. Service Description</h2>
+<p>Margin is a multilingual vocabulary learning app that provides AI-powered word lookups, vocabulary management, spaced repetition review, and text-to-speech pronunciation. The app uses artificial intelligence (Google Gemini) to generate word definitions, translations, and example sentences.</p>
 
-    <div class="section card">
-      <div class="section-number">01</div>
-      <h2>Acceptance of Terms</h2>
-      <p>By downloading, installing, or using Margin ("the App"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, please do not use the App.</p>
-      <p>These Terms constitute a legally binding agreement between you and Susie Hao ("Developer", "we", "us", or "our"). We reserve the right to update these Terms at any time, and your continued use of the App constitutes acceptance of any changes.</p>
-    </div>
+<h2>2. AI-Generated Content</h2>
+<p>Word definitions, translations, synonyms, antonyms, and example sentences are generated by Google's Gemini AI. While we strive for accuracy, AI-generated content may occasionally contain errors or inaccuracies. You should not rely solely on Margin for academic, professional, or critical language needs. We are not responsible for decisions made based on AI-generated content.</p>
 
-    <div class="section card">
-      <div class="section-number">02</div>
-      <h2>Description of Service</h2>
-      <p>Margin is a multilingual vocabulary learning application that allows users to:</p>
-      <ul>
-        <li>Look up words and phrases across multiple languages using AI-powered analysis.</li>
-        <li>Save vocabulary items to a personal archive for future reference.</li>
-        <li>Review saved vocabulary using a spaced repetition system.</li>
-        <li>Access premium features through a Pro subscription.</li>
-      </ul>
-    </div>
+<h2>3. Account</h2>
+<p>You must sign in with Apple to use Margin. You are responsible for maintaining the security of your account. You may delete your account at any time through the app's settings, which will permanently remove all your data.</p>
 
-    <div class="section card">
-      <div class="section-number">03</div>
-      <h2>User Accounts</h2>
-      <p>To use the App, you must sign in with Apple. By creating an account, you agree to:</p>
-      <ul>
-        <li>Provide accurate and complete information.</li>
-        <li>Maintain the security of your account credentials.</li>
-        <li>Accept responsibility for all activity that occurs under your account.</li>
-        <li>Notify us immediately of any unauthorized use of your account.</li>
-      </ul>
-      <p>We reserve the right to terminate accounts that violate these Terms.</p>
-    </div>
+<h2>4. Subscriptions & Payments</h2>
+<ul>
+  <li>Margin offers a free tier with limited features and a Pro subscription with enhanced features.</li>
+  <li>Pro subscriptions are billed through Apple's App Store. Prices are displayed in the app before purchase.</li>
+  <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</li>
+  <li>You can manage or cancel your subscription in your Apple ID settings (Settings → Apple ID → Subscriptions).</li>
+  <li>Refunds are handled by Apple according to their refund policy.</li>
+</ul>
 
-    <div class="section card">
-      <div class="section-number">04</div>
-      <h2>Subscriptions &amp; Billing</h2>
-      <p>Margin offers the following auto-renewable subscription plans:</p>
-      <div class="subscription-card">
-        <div class="plan">
-          <span class="plan-name">Monthly Plan</span>
-          <span class="plan-price">$4.99 / month</span>
-        </div>
-        <div class="plan">
-          <span class="plan-name">Yearly Plan</span>
-          <span class="plan-price">$39.99 / year</span>
-        </div>
-      </div>
-      <p>By subscribing, you agree to the following:</p>
-      <ul>
-        <li>Payment will be charged to your Apple ID account at confirmation of purchase.</li>
-        <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
-        <li>Your account will be charged for renewal within 24 hours prior to the end of the current period.</li>
-        <li>You can manage and cancel your subscription in your Apple ID Account Settings at any time.</li>
-        <li>No refunds will be provided for the unused portion of any subscription period, except as required by applicable law.</li>
-      </ul>
-    </div>
+<h2>5. Free Tier Limitations</h2>
+<ul>
+  <li>Free users are limited to 30 word lookups per day and 50 saved vocabulary items.</li>
+  <li>Once limits are reached, lookups and saving are disabled until the limit resets (daily for lookups) or the user upgrades to Pro.</li>
+</ul>
 
-    <div class="section card">
-      <div class="section-number">05</div>
-      <h2>Free Tier Limitations</h2>
-      <p>The free tier of Margin includes limited access to AI-powered features. Specifically:</p>
-      <ul>
-        <li>Free users are limited to a set number of AI lookups per minute.</li>
-        <li>Vocabulary archive storage is limited on the free tier.</li>
-        <li>Certain UI features and voice options are available to Pro subscribers only.</li>
-      </ul>
-      <p>We reserve the right to adjust free tier limits at any time with reasonable notice.</p>
-    </div>
+<h2>6. Acceptable Use</h2>
+<p>You agree not to:</p>
+<ul>
+  <li>Use automated tools, scripts, or bots to access the service.</li>
+  <li>Attempt to bypass rate limits or usage restrictions.</li>
+  <li>Reverse engineer, decompile, or disassemble the app.</li>
+  <li>Use the service for any illegal or unauthorized purpose.</li>
+  <li>Share your account credentials with others.</li>
+</ul>
 
-    <div class="section card">
-      <div class="section-number">06</div>
-      <h2>Acceptable Use</h2>
-      <p>You agree not to use the App to:</p>
-      <ul>
-        <li>Violate any applicable laws or regulations.</li>
-        <li>Attempt to reverse engineer, decompile, or extract the source code of the App.</li>
-        <li>Use automated tools or scripts to abuse the AI lookup functionality.</li>
-        <li>Share your account credentials with others or attempt to circumvent subscription requirements.</li>
-        <li>Transmit any harmful, offensive, or inappropriate content through the App.</li>
-        <li>Interfere with or disrupt the integrity or performance of the App or its servers.</li>
-      </ul>
-      <p>Violation of these terms may result in immediate account termination.</p>
-    </div>
+<h2>7. Intellectual Property</h2>
+<p>The Margin app, including its design, code, and brand, is owned by us. AI-generated content (definitions, translations) is provided for your personal learning use. You may not redistribute or commercially use bulk AI-generated content from the app.</p>
 
-    <div class="section card">
-      <div class="section-number">07</div>
-      <h2>Intellectual Property</h2>
-      <p>The App, including its design, code, content, and branding, is owned by Susie Hao and is protected by applicable intellectual property laws.</p>
-      <p>You retain ownership of the vocabulary content you create and save within the App. By using the App, you grant us a limited license to store and process your content solely for the purpose of providing the service.</p>
-      <p>You may not reproduce, distribute, or create derivative works from the App without our express written permission.</p>
-    </div>
+<h2>8. Service Availability</h2>
+<p>We aim to keep Margin available at all times, but we do not guarantee uninterrupted service. The app depends on third-party services (Supabase, Google AI, Apple) that may experience downtime. We are not liable for service interruptions caused by third parties.</p>
 
-    <div class="section card">
-      <div class="section-number">08</div>
-      <h2>Third-Party Services</h2>
-      <p>The App integrates with third-party services including Google Gemini API, Supabase, RevenueCat, and Apple Sign In. Your use of these services is subject to their respective terms of service and privacy policies. We are not responsible for the practices of these third-party providers.</p>
-    </div>
+<h2>9. Limitation of Liability</h2>
+<p>Margin is provided "as is" without warranties of any kind. To the maximum extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app. Our total liability is limited to the amount you paid for the service in the 12 months preceding the claim.</p>
 
-    <div class="section card">
-      <div class="section-number">09</div>
-      <h2>Disclaimer of Warranties</h2>
-      <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that:</p>
-      <ul>
-        <li>The App will be uninterrupted, error-free, or free of viruses.</li>
-        <li>AI-generated content will be accurate, complete, or suitable for any particular purpose.</li>
-        <li>The App will meet your specific requirements.</li>
-      </ul>
-      <p>AI-generated definitions, translations, and example sentences are for educational reference only and should not be relied upon as authoritative sources.</p>
-    </div>
+<h2>10. Changes to Terms</h2>
+<p>We may update these terms from time to time. Continued use of the app after changes constitutes acceptance of the new terms. We will notify you of significant changes through the app.</p>
 
-    <div class="section card">
-      <div class="section-number">10</div>
-      <h2>Limitation of Liability</h2>
-      <p>To the maximum extent permitted by applicable law, Susie Hao shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the App, including but not limited to loss of data, loss of revenue, or loss of goodwill.</p>
-      <p>Our total liability to you for any claims arising from your use of the App shall not exceed the amount you paid us in the twelve months preceding the claim.</p>
-    </div>
+<h2>11. Governing Law</h2>
+<p>These terms are governed by the laws of Japan. Any disputes will be resolved in the courts of Tokyo, Japan.</p>
 
-    <div class="section">
-      <div class="section-number">11</div>
-      <h2>Contact Us</h2>
-      <p>If you have any questions about these Terms of Use, please contact us:</p>
-      <div class="contact-block">
-        <p><strong>Developer</strong> &nbsp; Susie Hao</p>
-        <p><strong>Email</strong> &nbsp; <a href="mailto:ennc64276@gmail.com">ennc64276@gmail.com</a></p>
-        <p style="margin-top:0.8rem; font-size:0.82rem; color:rgba(45,90,82,0.5);">We aim to respond to all inquiries within 5 business days.</p>
-      </div>
-    </div>
+<h2>12. Contact</h2>
+<p>For questions about these terms, contact us at:</p>
+<p><strong>Email:</strong> margin.app.contact@gmail.com</p>
 
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Susie Hao · Margin App · All rights reserved</p>
-    <div class="footer-links">
-      <a href="./index.html">Privacy Policy</a>
-      <a href="./terms.html">Terms of Use</a>
-      <a href="mailto:ennc64276@gmail.com">Contact</a>
-    </div>
-  </footer>
+<div class="footer">
+  <p>&copy; 2026 Margin. All rights reserved.</p>
+</div>
 
 </body>
 </html>
